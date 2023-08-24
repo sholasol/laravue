@@ -25,19 +25,19 @@ defineProps(["users"]);
                 <Table>
                     <template #header>
                         <TableRow>
-                            <TableHeader>ID</TableHeader>
+                            <TableHeader width="5%">ID</TableHeader>
                             <TableHeader>Name</TableHeader>
                             <TableHeader>Email</TableHeader>
-                            <TableHeader>Action</TableHeader>
+                            <TableHeader width="15%">Action</TableHeader>
                         </TableRow>
                     </template>
                     <template #default>
                         <TableRow
-                            v-for="user in users"
+                            v-for="(user, index) in users"
                             :key="user.id"
                             class="border-b"
                         >
-                            <TableData> {{ user.id }}</TableData>
+                            <TableData> {{ index + 1 }}</TableData>
                             <TableData> {{ user.name }}</TableData>
                             <TableData> {{ user.email }}</TableData>
                             <TableData>
