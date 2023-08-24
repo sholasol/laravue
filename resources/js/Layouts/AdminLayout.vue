@@ -6,6 +6,7 @@ import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/vue3";
+import SidebarLink from "@/Components/SidebarLink.vue";
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -28,11 +29,7 @@ const showingNavigationDropdown = ref(false);
 
                 <ul class="space-y-2 tracking-wide mt-8">
                     <li>
-                        <Link
-                            href="/dashboard"
-                            aria-label="dashboard"
-                            class="relative px-4 py-3 flex items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-sky-600 to-cyan-400"
-                        >
+                        <SidebarLink href="/dashboard" :active="false">
                             <svg
                                 class="-ml-1 h-6 w-6"
                                 viewBox="0 0 24 24"
@@ -52,113 +49,76 @@ const showingNavigationDropdown = ref(false);
                                 ></path>
                             </svg>
                             <span class="-mr-1 font-medium">Dashboard</span>
-                        </Link>
+                        </SidebarLink>
                     </li>
                     <li>
-                        <a
-                            href="#"
-                            class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group"
+                        <SidebarLink
+                            :href="route('users.index')"
+                            :active="route().current('users.index')"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-6 h-6"
                             >
                                 <path
-                                    class="fill-current text-gray-300 group-hover:text-cyan-300"
-                                    fill-rule="evenodd"
-                                    d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
-                                    clip-rule="evenodd"
-                                />
-                                <path
-                                    class="fill-current text-gray-600 group-hover:text-cyan-600"
-                                    d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
                                 />
                             </svg>
-                            <span class="group-hover:text-gray-700"
-                                >Categories</span
-                            >
-                        </a>
+
+                            <span class="-mr-1 font-medium">Users</span>
+                        </SidebarLink>
                     </li>
                     <li>
-                        <a
-                            href="#"
-                            class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group"
+                        <SidebarLink
+                            :href="route('roles.index')"
+                            :active="route().current('roles.index')"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-6 h-6"
                             >
                                 <path
-                                    class="fill-current text-gray-600 group-hover:text-cyan-600"
-                                    fill-rule="evenodd"
-                                    d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
-                                    clip-rule="evenodd"
-                                />
-                                <path
-                                    class="fill-current text-gray-300 group-hover:text-cyan-300"
-                                    d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z"
                                 />
                             </svg>
-                            <span class="group-hover:text-gray-700"
-                                >Reports</span
-                            >
-                        </a>
+
+                            <span class="-mr-1 font-medium">Roles</span>
+                        </SidebarLink>
                     </li>
                     <li>
-                        <a
-                            href="#"
-                            class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group"
+                        <SidebarLink
+                            :href="route('permissions.index')"
+                            :active="route().current('permissions.index')"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-6 h-6"
                             >
                                 <path
-                                    class="fill-current text-gray-600 group-hover:text-cyan-600"
-                                    d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"
-                                />
-                                <path
-                                    class="fill-current text-gray-300 group-hover:text-cyan-300"
-                                    d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"
-                                />
-                            </svg>
-                            <span class="group-hover:text-gray-700"
-                                >Other data</span
-                            >
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#"
-                            class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                            >
-                                <path
-                                    class="fill-current text-gray-300 group-hover:text-cyan-300"
-                                    d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"
-                                />
-                                <path
-                                    class="fill-current text-gray-600 group-hover:text-cyan-600"
-                                    fill-rule="evenodd"
-                                    d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
-                                    clip-rule="evenodd"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33"
                                 />
                             </svg>
-                            <span class="group-hover:text-gray-700"
-                                >Finance</span
-                            >
-                        </a>
+
+                            <span class="-mr-1 font-medium">Permissions</span>
+                        </SidebarLink>
                     </li>
                 </ul>
             </div>
@@ -166,12 +126,15 @@ const showingNavigationDropdown = ref(false);
             <div
                 class="px-6 -mx-6 pt-4 flex justify-between items-center border-t"
             >
-                <button
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group"
+                <Link
+                    :href="route('logout')"
+                    method="post"
+                    as="button"
+                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-red-600 group"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
+                        class="h-6 w-6 group-hover:text-gray-700"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -184,7 +147,7 @@ const showingNavigationDropdown = ref(false);
                         />
                     </svg>
                     <span class="group-hover:text-gray-700">Logout</span>
-                </button>
+                </Link>
             </div>
         </aside>
         <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
