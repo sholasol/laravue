@@ -1,6 +1,6 @@
 <script setup>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 import Table from "@/Components/Table.vue";
 import TableData from "@/Components/TableData.vue";
 import TableHeader from "@/Components/TableHeader.vue";
@@ -13,14 +13,19 @@ defineProps(["users"]);
     <Head title="Users" />
 
     <AdminLayout>
-        <template #header>
+        <div class="flex justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Users
             </h2>
-        </template>
+            <Link
+                :href="route('users.create')"
+                class="px-3 py-2 text-white font-semibold bg-indigo-500 hover:bg-indigo-700 rounded"
+            >
+                Add User
+            </Link>
+        </div>
 
         <div class="max-w-7xl mx-auto py-4">
-            <h4>Users Index Page</h4>
             <div class="mt-6">
                 <Table>
                     <template #header>

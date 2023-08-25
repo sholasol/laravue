@@ -1,6 +1,6 @@
 <script setup>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 import Table from "@/Components/Table.vue";
 import TableData from "@/Components/TableData.vue";
 import TableHeader from "@/Components/TableHeader.vue";
@@ -13,17 +13,23 @@ defineProps(["permissions"]);
     <Head title="Permissions" />
 
     <AdminLayout>
-        <template #header>
+        <div class="flex justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Permission
+                Permissions
             </h2>
-        </template>
+            <Link
+                :href="route('permissions.create')"
+                class="px-3 py-2 text-white font-semibold bg-indigo-500 hover:bg-indigo-700 rounded"
+            >
+                Add Permission
+            </Link>
+        </div>
 
         <div class="py-4">
             <Table>
                 <template #header>
                     <TableRow>
-                        <TableHeader>ID</TableHeader>
+                        <TableHeader width="5%">ID</TableHeader>
                         <TableHeader>Name</TableHeader>
                         <TableHeader width="15%">Action</TableHeader>
                     </TableRow>
@@ -37,7 +43,8 @@ defineProps(["permissions"]);
                         <TableData> {{ permission.id }}</TableData>
                         <TableData> {{ permission.name }}</TableData>
                         <TableData>
-                            <a
+                            <Link
+                                :href="route('permissions.edit', permission.id)"
                                 type="button"
                                 class="btn-sm text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-green-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             >
@@ -57,9 +64,13 @@ defineProps(["permissions"]);
                                 </svg>
 
                                 <span class="sr-only">Icon description</span>
-                            </a>
-                            <a
-                                type="button"
+                            </Link>
+                            <Link
+                                :href="
+                                    route('permissions.destroy', permission.id)
+                                "
+                                method="DELETE"
+                                as="button"
                                 class="btn-sm text-white bg-blue-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-red-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             >
                                 <svg
@@ -78,7 +89,7 @@ defineProps(["permissions"]);
                                 </svg>
 
                                 <span class="sr-only">Icon description</span>
-                            </a>
+                            </Link>
                         </TableData>
                     </TableRow>
                 </template>
