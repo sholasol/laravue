@@ -29,7 +29,10 @@ const showingNavigationDropdown = ref(false);
 
                 <ul class="space-y-2 tracking-wide mt-8">
                     <li>
-                        <SidebarLink href="/dashboard" :active="false">
+                        <SidebarLink
+                            href="/dashboard"
+                            :active="route().current('dashboard')"
+                        >
                             <svg
                                 class="-ml-1 h-6 w-6"
                                 viewBox="0 0 24 24"

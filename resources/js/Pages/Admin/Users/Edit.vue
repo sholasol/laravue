@@ -6,18 +6,19 @@ import InputLabel from "@/Components/InputLabel.vue";
 import InputError from "@/Components/InputError.vue";
 import TextInput from "@/Components/TextInput.vue";
 
+const props = defineProps({
+    user: {
+        type: Object,
+        required: true,
+    },
+});
 const form = useForm({
-    name: "",
-    email: "",
-    password: "",
-    password_confirmation: "",
-    term: false,
+    name: props.user?.name,
+    email: props.user?.email,
 });
 
 const submit = () => {
-    form.post(route("users.store"), {
-        onFinish: () => form.reset("password", "password_confirmation"),
-    });
+    form.put(route("users.update", props.user.id));
 };
 </script>
 
@@ -68,31 +69,6 @@ const submit = () => {
                     </div>
                 </div>
 
-                <!--Password input-->
-                <div class="relative mb-6" data-te-input-wrapper-init>
-                    <InputLabel for="password" value="Password" />
-                    <TextInput
-                        id="password"
-                        v-model="form.password"
-                        type="password"
-                        class="peer block min-h-[auto] w-full rounded border-0 px-3"
-                    />
-
-                    <InputError class="mt-2" :message="form.errors.password" />
-                </div>
-                <div class="relative mb-6" data-te-input-wrapper-init>
-                    <InputLabel
-                        for="password_confirmation"
-                        value="Confirm Password"
-                    />
-                    <TextInput
-                        id="password"
-                        v-model="form.password_confirmation"
-                        type="password"
-                        class="peer block min-h-[auto] w-full rounded border-0 px-3"
-                    />
-                </div>
-
                 <!--Submit button-->
                 <PrimaryButton
                     type="submit"
@@ -100,7 +76,7 @@ const submit = () => {
                     data-te-ripple-init
                     data-te-ripple-color="light"
                 >
-                    Create User
+                    Update User
                 </PrimaryButton>
             </form>
         </div>

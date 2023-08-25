@@ -46,7 +46,8 @@ defineProps(["users"]);
                             <TableData> {{ user.name }}</TableData>
                             <TableData> {{ user.email }}</TableData>
                             <TableData>
-                                <a
+                                <Link
+                                    :href="route('users.edit', user.id)"
                                     type="button"
                                     class="btn-sm text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-green-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                 >
@@ -68,9 +69,11 @@ defineProps(["users"]);
                                     <span class="sr-only"
                                         >Icon description</span
                                     >
-                                </a>
-                                <a
-                                    type="button"
+                                </Link>
+                                <Link
+                                    :href="route('users.destroy', user.id)"
+                                    method="DELETE"
+                                    as="button"
                                     class="btn-sm text-white bg-blue-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-red-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                 >
                                     <svg
@@ -91,7 +94,7 @@ defineProps(["users"]);
                                     <span class="sr-only"
                                         >Icon description</span
                                     >
-                                </a>
+                                </Link>
                             </TableData>
                         </TableRow>
                     </template>
