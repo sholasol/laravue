@@ -1023,7 +1023,7 @@ import { Head } from "@inertiajs/vue3";
                 </div>
 
                 <div>
-                    <!-- component -->
+                    <!-- Main Tablecomponent -->
                     <div
                         class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8"
                     >
@@ -1107,7 +1107,7 @@ import { Head } from "@inertiajs/vue3";
                                         <th
                                             class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider"
                                         >
-                                            Created At
+                                            Created
                                         </th>
                                         <th
                                             class="px-6 py-3 border-b-2 border-gray-300"

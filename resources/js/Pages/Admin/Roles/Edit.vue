@@ -26,7 +26,7 @@ const form = useForm({
 });
 
 onMounted(() => {
-    form.permissions = props.role?.permissions;
+    form.permissions = props.role.permissions;
 });
 
 watch(
