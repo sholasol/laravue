@@ -42,7 +42,7 @@ watch(
         <div class="max-w-12xl mx-auto py-4">
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    Update Roles
+                    Update Roles 1
                 </h2>
                 <Link
                     :href="route('roles.index')"
@@ -54,7 +54,7 @@ watch(
 
             <div class="mt-6 max-w-2xl mx-auto bg-slate-100 shadow-lg p-6">
                 <h2 class="text-2xl font-semibold text-indigo-700 mb-2">
-                    Create User
+                    Add Permission to Role
                 </h2>
                 <form
                     @submit.prevent="form.put(route('roles.update', role.id))"
