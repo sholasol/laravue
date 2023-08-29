@@ -6,20 +6,35 @@ import InputLabel from "@/Components/InputLabel.vue";
 import InputError from "@/Components/InputError.vue";
 import TextInput from "@/Components/TextInput.vue";
 
+import VueMultiselect from "vue-multiselect";
+import Table from "@/Components/Table.vue";
+import TableData from "@/Components/TableData.vue";
+import TableHeader from "@/Components/TableHeader.vue";
+import TableRow from "@/Components/TableRow.vue";
+
 const props = defineProps({
     user: {
         type: Object,
         required: true,
     },
+    roles: Array,
+    permissions: Array,
 });
 const form = useForm({
     name: props.user?.name,
     email: props.user?.email,
+    roles: [],
+    permissions: [],
 });
 
 const submit = () => {
     form.put(route("users.update", props.user.id));
 };
+
+// onMounted(() => {
+//     form.permissions = props.user?.permissions;
+//     form.roles = props.user?.roles;
+// });
 </script>
 
 <template>
@@ -67,6 +82,30 @@ const submit = () => {
 
                         <InputError class="mt-2" :message="form.errors.email" />
                     </div>
+                    <div class="mb-6">
+                        <InputLabel for="permissons" value="Permissions" />
+                        <VueMultiselect
+                            v-model="form.permissions"
+                            :options="permissions"
+                            :multiple="true"
+                            :close-on-select="true"
+                            placeholder="Pick Permissions"
+                            label="permissions"
+                            track-by="id"
+                        />
+                    </div>
+                    <div class="mb-6">
+                        <InputLabel for="roles" value="Roles" />
+                        <VueMultiselect
+                            v-model="form.roles"
+                            :options="roles"
+                            :multiple="true"
+                            :close-on-select="true"
+                            placeholder="Pick Role"
+                            label="roles"
+                            track-by="id"
+                        />
+                    </div>
                 </div>
 
                 <!--Submit button-->
@@ -82,3 +121,4 @@ const submit = () => {
         </div>
     </AdminLayout>
 </template>
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>

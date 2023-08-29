@@ -396,19 +396,10 @@ defineProps({
                     >
                         <a
                             class="transform text-gray-700 transition-colors duration-300 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400 lg:mx-8"
-                            href="#"
+                            href="/"
                             >Home</a
                         >
-                        <a
-                            class="transform text-gray-700 transition-colors duration-300 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400 lg:mx-8"
-                            href="#"
-                            >Components</a
-                        >
-                        <a
-                            class="transform text-gray-700 transition-colors duration-300 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400 lg:mx-8"
-                            href="#"
-                            >Pricing</a
-                        >
+
                         <Link
                             :href="route('login')"
                             class="transform text-gray-700 transition-colors duration-300 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400 lg:mx-8"
